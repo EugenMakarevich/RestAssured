@@ -1,6 +1,7 @@
 import io.restassured.path.json.JsonPath;
 
 import static files.Payload.getCoursePriceResponse;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ComplexJsonParse {
 
@@ -30,9 +31,17 @@ public class ComplexJsonParse {
             String RpaTitle = "RPA";
             if (json.getString("courses[" + i + "].title").equals(RpaTitle)) {
                 System.out.println("Number of RPA copies: " + json.getString("courses[" + i + "].copies"));
+                break;
             }
         }
 
 //6. Verify if Sum of all Course prices matches with Purchase Amount
+        int totalPrice = 0;
+        for (int i = 0; i < numOfCourses; i++) {
+            int price = json.getInt("courses[" + i + "].price");
+            int numOfCopies = json.getInt("courses[" + i + "].copies");
+            totalPrice += price * numOfCopies;
+        }
+        assertEquals(totalPrice, purchaseAmount);
     }
 }
