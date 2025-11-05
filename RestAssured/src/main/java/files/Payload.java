@@ -62,4 +62,13 @@ public class Payload {
                 "}\r\n" +
                 "";
     }
+
+    public static String getAddBookBody() {
+        return "{\n" +
+                "\"name\":\"Bible 2.0\",\n" +
+                "\"isbn\":\"wtf\",\n" +
+                "\"aisle\":\"7777\",\n" +
+                "\"author\":\"Eugen The Great\"\n" +
+                "}";
+    }
 }
