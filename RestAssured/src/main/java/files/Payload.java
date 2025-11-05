@@ -63,12 +63,15 @@ public class Payload {
                 "";
     }
 
-    public static String getAddBookBody() {
-        return "{\n" +
-                "\"name\":\"Bible 2.0\",\n" +
-                "\"isbn\":\"wtf\",\n" +
-                "\"aisle\":\"7777\",\n" +
-                "\"author\":\"Eugen The Great\"\n" +
-                "}";
+    public static String getAddBookBody(String isbn, String aisle) {
+        return String.format(
+                "{" +
+                        "  \"name\": \"Bible 2.0\",\n" +
+                        "  \"isbn\": \"%s\",\n" +
+                        "  \"aisle\": \"%s\",\n" +
+                        "  \"author\": \"Eugen The Great\"\n" +
+                        "}", isbn, aisle
+        );
     }
+
 }
