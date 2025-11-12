@@ -17,13 +17,13 @@ public class AddBookTest {
     }
 
     @Test(dataProvider = "bookData")
-    public void addBookTest() {
+    public void addBookTest(String isbn, String aisle) {
         RestAssured.baseURI = "https://rahulshettyacademy.com";
         JsonPath addBookResponse = given()
                 .log()
                 .all()
                 .header("Content-Type", "application/json")
-                .body(Payload.getAddBookBody("wtf", "7777"))
+                .body(Payload.getAddBookBody(isbn, aisle))
                 .when()
                 .post("/Library/Addbook.php")
                 .then()
@@ -37,4 +37,10 @@ public class AddBookTest {
         String id = addBookResponse.get("ID");
         System.out.println(id);
     }
+
+    // Delete book
+    // 1. Create an instance list variable to collect IDs from addBookTest()
+    // 4. Create @DataProvider
+    // 2. Create delete response and request
+    // 3. Verify: 200 OK, "msg": "book is successfully deleted"
 }
