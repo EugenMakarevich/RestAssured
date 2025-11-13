@@ -62,4 +62,21 @@ public class Payload {
                 "}\r\n" +
                 "";
     }
+
+    public static String getAddBookBody(String isbn, String aisle) {
+        return String.format(
+                "{" +
+                        "  \"name\": \"Bible 2.0\",\n" +
+                        "  \"isbn\": \"%s\",\n" +
+                        "  \"aisle\": \"%s\",\n" +
+                        "  \"author\": \"Eugen The Great\"\n" +
+                        "}", isbn, aisle
+        );
+    }
+
+    public static String getDeleteBookBody(String id) {
+        return String.format("{" +
+                "    \"ID\": \"%s\"" +
+                "}", id);
+    }
 }
