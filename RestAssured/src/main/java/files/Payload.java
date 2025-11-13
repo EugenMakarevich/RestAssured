@@ -74,4 +74,9 @@ public class Payload {
         );
     }
 
+    public static String getDeleteBookBody(String id) {
+        return String.format("{" +
+                "    \"ID\": \"%s\"" +
+                "}", id);
+    }
 }
